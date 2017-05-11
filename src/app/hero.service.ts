@@ -32,7 +32,14 @@ export class HeroService {
       const url = `${this.heroesUrl}/${hero.id}`;
       return this.http.put(url, JSON.stringify(hero), {headers: this.headers})
         .toPromise()
-        .then(()=>hero)
+        .then(() => hero)
         .catch(this.errorHandler)
+  }
+  delete(hero: Hero): Promise<void> {
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.errorHandler)
   }
 }
